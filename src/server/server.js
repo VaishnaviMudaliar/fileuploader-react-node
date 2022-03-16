@@ -20,14 +20,14 @@ const storage = multer.diskStorage({
   },
 });
 
-const upload = multer({ storage }).single('file');
+const upload = multer({ storage }).array('file');
 
 app.post('/upload', (req, res) => {
   upload(req, res, (err) => {
     if (err) {
       return res.status(500).json(err);
     }
-    return res.status(200).send(req.file);
+    return res.status(200).send(req.files);
   });
 });
 

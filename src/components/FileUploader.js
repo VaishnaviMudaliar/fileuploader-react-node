@@ -11,7 +11,11 @@ export default function FileUploader() {
   const onSubmit = (e) => {
     e.preventDefault();
     const data = new FormData();
-    data.append('file', files);
+
+    for (let i = 0; i < files.length; i++) {
+      data.append('file', files[i]);
+    }
+
     axios
       .post('http://localhost:8000/upload', data)
       .then((e) => {
