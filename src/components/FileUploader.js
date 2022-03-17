@@ -20,7 +20,7 @@ export default function FileUploader() {
 
     axios
       .post('http://localhost:8001/upload', data)
-      .then((e) => {
+      .then((response) => {
         toast.success('Uploaded Successfully!!');
       })
       .catch((e) => {
