@@ -2,6 +2,8 @@ import './fileuploader.css';
 import React from 'react';
 import { useState } from 'react';
 import axios from 'axios';
+import { toast } from 'react-toastify';
+
 export default function FileUploader() {
   const [files, setFiles] = useState([]);
   const onInputChange = (e) => {
@@ -17,12 +19,12 @@ export default function FileUploader() {
     }
 
     axios
-      .post('http://localhost:8000/upload', data)
+      .post('http://localhost:8001/upload', data)
       .then((e) => {
-        console.log('Success');
+        toast.success('Uploaded Successfully!!');
       })
       .catch((e) => {
-        console.error('Error', e);
+        toast.error('Upload Error');
       });
   };
   return (
